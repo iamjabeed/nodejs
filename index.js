@@ -11,12 +11,13 @@
 // console.log(__filename)
 
 //* Module
-const names = require("./app");
+// const names = require("./app");
+// console.log(names.sum(2,3));
 
-console.log(names.sum(2,3));
+const {names, ages, sum} = require("./app");
+
+// console.log(names , ages, sum(68, 1));
+console.log(names + "\n" + ages + "\n" + sum(68, 1));
 
 
-// function sum(a, b) {
-//   console.log(a + b);
-// }
-// sum(2, 3);
+
