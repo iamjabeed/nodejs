@@ -49,18 +49,32 @@ const fs = require("fs");
 // );
 
 //* Directory
-if (!fs.existsSync("./assest")) {
-  fs.mkdir("./assest", (err) => {
-    if (err) {
-      console.log(err);
-    }
-    console.log("folder created");
-  });
-} else {
-  fs.rmdir("./assest", (err) => {
-    if (err) {
-      console.log(err);
-    }
-    console.log("file deleted");
-  });
-}
+// if (!fs.existsSync("./assest")) {
+//   fs.mkdir("./assest", (err) => {
+//     if (err) {
+//       console.log(err);
+//     }
+//     console.log("folder created");
+//   });
+// } else {
+//   fs.rmdir("./assest", (err) => {
+//     if (err) {
+//       console.log(err);
+//     }
+//     console.log("folder deleted");
+//   });
+// }
+
+// console.log(__dirname+"./assest");
+
+//* Streams
+// const fs = require('fs');
+
+// Create a Readable stream from the source file
+const readableStream = fs.createReadStream('source.txt');
+
+// Create a Writable stream to the destination file
+const writableStream = fs.createWriteStream('destination.txt');
+
+// Pipe the data from the Readable stream to the Writable stream
+readableStream.pipe(writableStream);
