@@ -26,7 +26,7 @@
 //* File system
 const fs = require("fs");
 // console.log(fs);
-//* Writing File
+//* Reading File
 
 //? It is asynchronous process
 
@@ -40,10 +40,27 @@ const fs = require("fs");
 
 //* Writing File
 
-fs.writeFile(
-  "./file/data2.txt",
-  "This data is wriiten by using fs.writeFile",
-  () => {
-    console.log("file written");
-  }
-);
+// fs.writeFile(
+//   "./file/data2.txt",
+//   "This data is wriiten by using fs.writeFile",
+//   () => {
+//     console.log("file written");
+//   }
+// );
+
+//* Directory
+if (!fs.existsSync("./assest")) {
+  fs.mkdir("./assest", (err) => {
+    if (err) {
+      console.log(err);
+    }
+    console.log("folder created");
+  });
+} else {
+  fs.rmdir("./assest", (err) => {
+    if (err) {
+      console.log(err);
+    }
+    console.log("file deleted");
+  });
+}
