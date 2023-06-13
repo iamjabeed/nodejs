@@ -6,17 +6,24 @@ const path = require("path");
 const port = 3000;
 
 //? Register ejs
+app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
   // console.log("listening on port 3000");
   // console.log(__dirname);
-  const filePath = path.join(__dirname, "views", "index.html");
-  res.sendFile(filePath);
+  // const filePath = path.join(__dirname, "views", "index.html");
+  // res.sendFile(filePath);
   // res.sendFile("./views/index.html");
+
+  //? With ejs
+  res.render("index", { title: "Home" });
 });
 
 app.get("/about", (req, res) => {
-  res.sendFile("./views/about.html", { root: __dirname });
+  // res.sendFile("./views/about.html", { root: __dirname });
+
+  //? With ejs
+  res.render("about", { title: "About" });
 });
 
 // app.get('/about', (req, res) => {
