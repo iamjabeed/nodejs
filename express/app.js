@@ -1,23 +1,37 @@
 const express = require("express");
 const app = express();
-// console.log("nodemon");
-const port = 3000
+const path = require("path");
 
+// console.log("nodemon");
+const port = 3000;
+
+//? Register ejs
 
 app.get("/", (req, res) => {
-  console.log("listening on port 3000");
-  res.send('<h1>Hello World!</h1>')
-});
-app.get("/about", (req, res) => {
-  
-  res.send("<p>nodemon supports local and global configuration files. These are usually named nodemon.json and can be located in the current working directory or in your home directory.</p>")
-});
-app.get("/contact", (req, res) => {
-  
-  res.send('Contact username')
+  // console.log("listening on port 3000");
+  // console.log(__dirname);
+  const filePath = path.join(__dirname, "views", "index.html");
+  res.sendFile(filePath);
+  // res.sendFile("./views/index.html");
 });
 
+app.get("/about", (req, res) => {
+  res.sendFile("./views/about.html", { root: __dirname });
+});
+
+// app.get('/about', (req, res) => {
+//   const filePath = path.join(__dirname, 'views', 'about.html');
+//   res.sendFile(filePath);
+// });
+
+app.get("/contact", (req, res) => {
+  res.send("<h1> Contact Page </h1>");
+});
+
+app.use((req, res) => {
+  res.status(404).send("<h1>Oops, Page not found:) </h1>");
+});
 
 app.listen(port, (req, res) => {
-    console.log(`Example app listening on port ${port}`)
+  console.log(`app listening on port ${port}`);
 });
